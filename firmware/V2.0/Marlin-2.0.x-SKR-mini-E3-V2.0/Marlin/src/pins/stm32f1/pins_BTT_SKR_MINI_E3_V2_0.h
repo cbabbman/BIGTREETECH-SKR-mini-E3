@@ -27,8 +27,11 @@
 // Release PA13/PA14 (led, usb control) from SWD pins
 #define DISABLE_DEBUG
 
-#define I2C_EEPROM  // On board AT24C32
-#define E2END       (0xFFF) // 4KB
+#define I2C_EEPROM
+#ifdef E2END
+#undef E2END
+#endif
+#define E2END 0x7FFF // EEPROM end address AT24C256 (32kB)
 
 #define NEOPIXEL_PIN                       PA8   // LED driving pin
 
